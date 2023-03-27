@@ -1,0 +1,56 @@
+string directory = "";
+string filename = "Data.txt";
+string fullPath = "";
+
+List <string> data = new List<string>();
+
+
+data = ReadFile();
+
+while (true)
+{
+    Print();
+
+    string line = Console.ReadLine();
+    if (line == "exit")
+    {
+        break;
+    }
+
+    if(line=="remove")
+    {
+        Console.WriteLine("Какую строку удаляем? (номер от нуля): ");
+        int linenumber = int.Parse(Console.ReadLine());
+        data.RemoveAt(linenumber);
+        continue;
+    }
+    data.Add("\n" + line);
+    Console.Clear();
+}
+
+Write();
+
+Console.ReadLine();
+
+List <string> ReadFile()
+{
+    directory = Directory.GetCurrentDirectory(); //непосредственно exe
+
+    directory = new DirectoryInfo(directory).Parent.Parent.FullName;//расположение понятнее, переход по уровням каталога
+
+    fullPath = Path.Combine(directory, filename);//Чтобы не обращать внимание  на слэши
+
+    return File.ReadAllLines(fullPath).ToList();
+}
+
+
+void Print()
+{
+    Console.WriteLine("Данные - " + data);
+}
+
+void Write()
+{
+    File.WriteAllLines(fullPath, data);  //Запись в файл
+}
+
