@@ -1,0 +1,36 @@
+int[] array = FillArray();
+
+int[] array2 = FillArray();
+
+Console.WriteLine(Separator(array));
+Console.WriteLine(Separator(array2));	
+
+
+Console.ReadLine();
+
+//////////////////////
+///
+int[] FillArray()
+{
+	int[] array = new int[10];
+	for (int i = 0; i < array.Length; i++)
+	{
+		array[i] = new Random().Next(0, 50);
+	}
+
+	return array;
+}
+
+string Separator(int[]array)
+{
+	string resArray = "";
+
+	foreach(int item in array)
+	{
+		resArray += item + ", ";
+	}
+
+	return resArray;
+
+}
+
