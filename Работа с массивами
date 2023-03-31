@@ -1,6 +1,9 @@
-int[] array = FillArray();
+int[] array = new int[4];
+int[] array2 = new int[8];
 
-int[] array2 = FillArray();
+array = FillArray(array.Length);
+
+array2 = FillArray(array2.Length);
 
 Console.WriteLine(Separator(array));
 Console.WriteLine(Separator(array2));	
@@ -10,9 +13,9 @@ Console.ReadLine();
 
 //////////////////////
 ///
-int[] FillArray()
+int[] FillArray(int size)
 {
-	int[] array = new int[10];
+	int[] array = new int[size];
 	for (int i = 0; i < array.Length; i++)
 	{
 		array[i] = new Random().Next(0, 50);
@@ -33,4 +36,5 @@ string Separator(int[]array)
 	return resArray;
 
 }
+
 
