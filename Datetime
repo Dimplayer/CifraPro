@@ -2,7 +2,9 @@ string day = DateTime.Now.Day.ToString();
 string month = DateTime.Now.Month.ToString();
 string year = DateTime.Now.Year.ToString();
 
+DateTime calculateTime = new DateTime(2023, 3, 31, 21, 20, 0);
 int sumSeconds=0;
+DateTime differece;
 
 while (true)
 {
@@ -12,8 +14,10 @@ while (true)
     Console.WriteLine(month);
     Console.WriteLine(year);
 
-    Console.WriteLine($"Время: {getHours()}:{getMinutes()}:{getSeconds()}");
+    Console.WriteLine($"Время: {getHours()}:{getMinutes(DateTime.Now)}:{getSeconds(DateTime.Now)}");
     Console.WriteLine("Сумма секунд = "+sumSeconds);
+    differece = new DateTime (calculateTime.Ticks - DateTime.Now.Ticks);
+    Console.WriteLine("До завершения пары "+getMinutes(differece)+" : "+getSeconds(differece));
     Thread.Sleep(1000);
 }
 
@@ -21,16 +25,16 @@ while (true)
 ///
 int AddSeconds(int _sumSeconds)
 {
-    return _sumSeconds + getSeconds();
+    return _sumSeconds + getSeconds(DateTime.Now);
 }
 
-int getSeconds()
+int getSeconds(DateTime dateTimeParam)
 {
-    return DateTime.Now.Second;
+    return dateTimeParam.Second;
 }
-int getMinutes()
+int getMinutes(DateTime dateTimeParam)
 {
-    return DateTime.Now.Minute;
+    return dateTimeParam.Minute;
 }
 int getHours()
 {
