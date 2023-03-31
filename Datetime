@@ -1,0 +1,38 @@
+string day = DateTime.Now.Day.ToString();
+string month = DateTime.Now.Month.ToString();
+string year = DateTime.Now.Year.ToString();
+
+int sumSeconds=0;
+
+while (true)
+{
+    Console.Clear();
+    sumSeconds = AddSeconds(sumSeconds);
+    Console.WriteLine(day);
+    Console.WriteLine(month);
+    Console.WriteLine(year);
+
+    Console.WriteLine($"Время: {getHours()}:{getMinutes()}:{getSeconds()}");
+    Console.WriteLine("Сумма секунд = "+sumSeconds);
+    Thread.Sleep(1000);
+}
+
+//////////////////////////
+///
+int AddSeconds(int _sumSeconds)
+{
+    return _sumSeconds + getSeconds();
+}
+
+int getSeconds()
+{
+    return DateTime.Now.Second;
+}
+int getMinutes()
+{
+    return DateTime.Now.Minute;
+}
+int getHours()
+{
+    return DateTime.Now.Hour;
+}
