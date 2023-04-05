@@ -1,0 +1,34 @@
+string _operators = "+";
+
+string line = Console.ReadLine();
+line = line.Replace ( _operators, " " + _operators + " " );
+
+List<string>_items = GetItems ( line );
+
+
+
+float value1 =0;
+float value2 =0;
+string oper ="";
+float.TryParse ( _items[0], out value1 );
+oper = _items[1].Trim ();
+float.TryParse ( _items[2], out value1 );
+
+Console.ReadLine ();
+
+
+
+
+List<string> GetItems(string text)
+{
+    List<string>items = line.Split(' ').ToList();
+
+    foreach (var item in items.ToList ())
+    {
+        if (item == "")
+        {
+            items.Remove ( item );
+        }
+    }
+    return items;
+}
