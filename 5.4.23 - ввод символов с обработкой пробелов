@@ -10,14 +10,36 @@ List<string>_items = GetItems ( line );
 float value1 =0;
 float value2 =0;
 string oper ="";
-float.TryParse ( _items[0], out value1 );
+bool _success = true;
+
+
+value1 = TryParse ( _items[0], ref _success );
 oper = _items[1].Trim ();
-float.TryParse ( _items[2], out value1 );
+value2 = TryParse ( _items[2], ref _success );
+
+if(_success ==false)
+{
+    Console.WriteLine ("Ошибка");
+}
 
 Console.ReadLine ();
 
 
-
+float TryParse (string line, ref bool success)
+{
+    float result = 0f;
+    try
+    {
+        result = float.Parse ( line );
+    }
+    catch
+    {
+        success = false;
+    }
+   
+    return result;
+    
+}
 
 List<string> GetItems(string text)
 {
